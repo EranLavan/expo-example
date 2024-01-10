@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={{ marginTop: 5 }}>
       <Image
@@ -11,7 +15,12 @@ const HomeScreen = () => {
         }}
       />
       <View style={{ padding: 10 }}>
-        <Text style={{ textAlign: "center", color: "magenta", fontSize: 20, fontWeight: "600" }}>
+        <Text style={{ 
+          textAlign: "center", 
+          color: "magenta", 
+          fontSize: 20, 
+          fontWeight: "600" 
+        }}>
           QUIZ RULES
         </Text>
 
@@ -93,7 +102,9 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <Pressable style={{
+        <Pressable 
+        onPress={() => navigation.navigate("Quiz")}
+        style={{
           backgroundColor: "magenta", 
           padding: 14,
           width: 120, 
