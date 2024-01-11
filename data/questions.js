@@ -1,6 +1,6 @@
 export default [
     {
-        question: "In what contintent is Indonesia?",
+        question: "In what continent is Indonesia?",
         options:[
             {
                 id:"0",
@@ -36,7 +36,7 @@ export default [
             {
                 id:"1",
                 options:"B",
-                answer:"South Africa",
+                answer:"Africa",
             },
             {
                 id:"2",
@@ -44,7 +44,7 @@ export default [
                 answer:"Australia",
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
                 answer:"Antarctica",
             },
