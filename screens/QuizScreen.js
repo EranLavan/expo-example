@@ -43,17 +43,28 @@ const QuizScreen = () => {
 
         <View style={{marginTop: 12}}>
           {currentQuestion?.options.map((item, i) => (
-            <View style={{flexDirection: "row", alignItems: "center"}}>
+            <View style={{
+              flexDirection: "row", 
+              alignItems: "center",
+              borderWidth: 0.5,
+              borderColor: "#00FFFF",
+              marginVertical: 15,
+              borderRadius: 20
+            
+            }}>
               <Text style={{
                 borderColor: "#00FFFF", 
-                textAlign: "center", 
+                textAlign: "center",
+                borderWidth: 0.5, 
                 width: 40, 
                 height: 40, 
                 borderRadius: 20,
                 padding: 10,
                 borderRadius: 20}}>{item.options}</Text>
 
-              <Text>{item.answer}</Text>
+              <Text style={{
+                marginLeft: 10
+              }}>{item.answer}</Text>
             </View>
           ))}
         </View>
