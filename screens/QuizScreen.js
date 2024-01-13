@@ -1,12 +1,34 @@
-import { StyleSheet, Text, SafeAreaView, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, SafeAreaView, View, Pressable } from 'react-native'
+import React, { useState } from 'react'
 import questions from '../data/questions'
 
 const QuizScreen = () => {
 
   const data = questions;
-  const currentQuestion = data[0];
-  console.log(currentQuestion)
+  //points
+  const [points, setPoints] = useState(0);
+
+  //index of the question
+  const [index, setIndex] = useState(0);
+
+  //answer status (true or false)
+  const [answerStatus, setAnswerStatus] = useState(null);
+
+  //answers
+  const [answers, setAnswers] = useState([]);
+
+  //selected answer
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+
+  //Counter
+  const [counter, setCounter] = useState(15);
+
+  //interval
+
+let interval = null;
+
+  const currentQuestion = data[index];
+  console.log(currentQuestion);
 
   return (
     <SafeAreaView>
@@ -32,7 +54,7 @@ const QuizScreen = () => {
 
       <View style={{
         backgroundColor: "#F0F8FF",
-        marginTop: 10,
+        marginTop: 30,
         padding: 10,
         borderRadius: 6,
       }}>
@@ -43,12 +65,14 @@ const QuizScreen = () => {
 
         <View style={{marginTop: 12}}>
           {currentQuestion?.options.map((item, i) => (
-            <View style={{
+            <Pressable 
+            onPress={() => console.warn("pressed on the option")}
+            style={{
               flexDirection: "row", 
               alignItems: "center",
               borderWidth: 0.5,
               borderColor: "#00FFFF",
-              marginVertical: 15,
+              marginVertical: 10,
               borderRadius: 20
             
             }}>
@@ -65,7 +89,7 @@ const QuizScreen = () => {
               <Text style={{
                 marginLeft: 10
               }}>{item.answer}</Text>
-            </View>
+            </Pressable>
           ))}
         </View>
 
