@@ -1,9 +1,11 @@
 import { StyleSheet, Text, SafeAreaView, View, Pressable } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import questions from '../data/questions'
+import { useNavigation } from '@react-navigation/native'
 
 const QuizScreen = () => {
 
+  const navigation = useNavigation();
   const data = questions;
   //points
   const [points, setPoints] = useState(0);
@@ -26,6 +28,74 @@ const QuizScreen = () => {
   //interval
 
 let interval = null;
+
+// useEffect 1: Selected Answer Index
+
+useEffect(() => {
+  if(selectedAnswerIndex !== null) {
+    if(selectedAnswerIndex === currentQuestion?.correctAnswerIndex) {
+      setPoints((points) => points + 10);
+      setAnswerStatus(true);
+      answers.push({
+        question: index + 1, 
+        answer: true})
+    } else {
+      setAnswerStatus(false);
+      answers.push({
+        question: index + 1, 
+        answer: false})
+    }
+  }
+}, [selectedAnswerIndex]);
+
+// useEffect 2: Current Question
+
+useEffect(() => {
+  setSelectedAnswerIndex(null);
+  setAnswerStatus(null);
+}, [currentQuestion])
+
+// useEffect 3: 
+
+useEffect(() => {
+  const myInterval = () => {
+    if (counter >= 1) {
+      setCounter((counter) => counter - 1);
+    }
+    if (counter === 0) {
+      setIndex(index + 1);
+      setCounter(15);
+    }
+
+    interval = setTimeout(myInterval, 1000);
+
+    //clean up 
+
+    return () => {
+      clearTimeout(interval);
+    }
+  }
+}, [counter])
+
+// useEffect 4: Navigation
+
+useEffect(() => {
+  if(index + 1 > data.length) {
+    navigation.navigate("Results", {
+      answers: answers,
+      points: points,
+    })
+  }
+}, [currentQuestion])
+
+// useEffect 5: Index
+
+useEffect(() => {
+  if(!interval) {
+    setCounter(15);
+  }
+}, [index])
+
 
   const currentQuestion = data[index];
   console.log(currentQuestion);
@@ -64,9 +134,10 @@ let interval = null;
         }}>{currentQuestion?.question}</Text>
 
         <View style={{marginTop: 12}}>
-          {currentQuestion?.options.map((item, i) => (
+          {currentQuestion?.options.map((item, index) => (
             <Pressable 
-            onPress={() => console.warn("pressed on the option")}
+            onPress={() => selectedAnswerIndex === null && setSelectedAnswerIndex(index)}
+            // onPress={() => console.warn("pressed an option")}
             style={{
               flexDirection: "row", 
               alignItems: "center",

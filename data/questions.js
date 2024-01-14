@@ -18,7 +18,7 @@ export default [
                 answer:"Asia",
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
                 answer:"India",
             },
@@ -71,7 +71,7 @@ export default [
                 answer:"10",
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
                 answer:"30",
             },
@@ -97,7 +97,7 @@ export default [
                 answer:"13",
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
                 answer:"23",
             },
@@ -123,7 +123,7 @@ export default [
                 answer:"Arctic Ocean",
             },
             {
-                id:"0",
+                id:"3",
                 options:"D",
                 answer:"Indian Ocean",
             },
