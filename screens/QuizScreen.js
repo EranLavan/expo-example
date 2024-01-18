@@ -137,16 +137,40 @@ useEffect(() => {
           {currentQuestion?.options.map((item, index) => (
             <Pressable 
             onPress={() => selectedAnswerIndex === null && setSelectedAnswerIndex(index)}
+            style={
+              selectedAnswerIndex === index && 
+              index === currentQuestion.correctAnswerIndex 
+              ? {                
+                  flexDirection: "row", 
+                  alignItems: "center",
+                  borderWidth: 0.5,
+                  borderColor: "#00FFFF",
+                  marginVertical: 10,
+                  backgroundColor: "green",
+                  borderRadius: 20
+                } 
+              : selectedAnswerIndex !== null && 
+                selectedAnswerIndex === index 
+              ? {
+                  flexDirection: "row", 
+                  alignItems: "center",
+                  borderWidth: 0.5,
+                  borderColor: "#00FFFF",
+                  marginVertical: 10,
+                  backgroundColor: "red",
+                  borderRadius: 20
+                } 
+              : {
+                  flexDirection: "row", 
+                  alignItems: "center",
+                  borderWidth: 0.5,
+                  borderColor: "#00FFFF",
+                  marginVertical: 10,
+                  borderRadius: 20
+                }
+          }
             // onPress={() => console.warn("pressed an option")}
-            style={{
-              flexDirection: "row", 
-              alignItems: "center",
-              borderWidth: 0.5,
-              borderColor: "#00FFFF",
-              marginVertical: 10,
-              borderRadius: 20
-            
-            }}>
+>
               <Text style={{
                 borderColor: "#00FFFF", 
                 textAlign: "center",
