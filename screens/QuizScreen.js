@@ -109,7 +109,9 @@ useEffect(() => {
         justifyContent: "space-between",
         padding: 10}}>
         <Text>Quiz Challenge</Text>
-        <Text>Timer</Text>
+        <Text style={{
+          padding: 10,
+        }}>{counter}</Text>
       </View>
 
       <View style={{
@@ -174,17 +176,37 @@ useEffect(() => {
 >
 
               {selectedAnswerIndex === index && index === currentQuestion?.correctAnswerIndex ? (
-                <AntDesign name="checkcircle" size={24} color="black" />
-              ) }
-              <Text style={{
-                borderColor: "#00FFFF", 
-                textAlign: "center",
-                borderWidth: 0.5, 
-                width: 40, 
-                height: 40, 
-                borderRadius: 20,
-                padding: 10,
-                borderRadius: 20}}>{item.options}</Text>
+                <AntDesign style={{
+                  borderColor: "#00FFFF", 
+                  textAlign: "center",
+                  borderWidth: 0.5, 
+                  width: 40, 
+                  height: 40, 
+                  padding: 10,
+                  borderRadius: 20
+                }} name="checkcircle" size={24} color="green" />
+              ) : selectedAnswerIndex != null && selectedAnswerIndex === index ? (
+                <AntDesign style={{
+                  borderColor: "#00FFFF", 
+                  textAlign: "center",
+                  borderWidth: 0.5, 
+                  width: 40, 
+                  height: 40, 
+                  padding: 10,
+                  borderRadius: 20
+                }} name="closecircle" size={24} color="red" />
+              ) : (
+                <Text style={{
+                  borderColor: "#00FFFF", 
+                  textAlign: "center",
+                  borderWidth: 0.5, 
+                  width: 40, 
+                  height: 40, 
+                  borderRadius: 20,
+                  padding: 10
+                }}>{item.options}</Text>
+              )}
+              
 
               <Text style={{
                 marginLeft: 10
