@@ -2,6 +2,7 @@ import { StyleSheet, Text, SafeAreaView, View, Pressable } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import questions from '../data/questions'
 import { useNavigation } from '@react-navigation/native'
+import { AntDesign } from '@expo/vector-icons';
 
 const QuizScreen = () => {
 
@@ -171,6 +172,10 @@ useEffect(() => {
           }
             // onPress={() => console.warn("pressed an option")}
 >
+
+              {selectedAnswerIndex === index && index === currentQuestion?.correctAnswerIndex ? (
+                <AntDesign name="checkcircle" size={24} color="black" />
+              ) }
               <Text style={{
                 borderColor: "#00FFFF", 
                 textAlign: "center",
